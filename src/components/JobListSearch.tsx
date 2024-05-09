@@ -1,13 +1,11 @@
 import { useActiveId } from "../hooks/useActiveId";
-import { useBookmarksContext } from "../hooks/useContexts";
-import { useJobItems } from "../hooks/useJobItems";
+import { useSearchQueryItems } from "../hooks/useSearchQueryItems";
 import JobListItem from "./JobListItem";
 import Spinner from "./Spinner";
 
-export function JobList() {
+export default function JobListSearch() {
   const activeId = useActiveId();
-  const { bookmarkedIds } = useBookmarksContext();
-  const { jobItems, isLoading } = useJobItems(bookmarkedIds);
+  const { jobItemsSortedAndSliced: jobItems, isLoading } = useSearchQueryItems();
 
   return (
     <ul className="job-list">
@@ -16,5 +14,3 @@ export function JobList() {
     </ul>
   );
 }
-
-export default JobList;

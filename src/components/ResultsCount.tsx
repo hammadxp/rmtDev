@@ -1,3 +1,11 @@
+import { useSearchQueryItems } from "../hooks/useSearchQueryItems";
+
 export default function ResultsCount() {
-  return <p className="count">0 results</p>;
+  const { totalResults } = useSearchQueryItems();
+
+  return (
+    <p className="count">
+      <span className="u-bold">{totalResults}</span> results
+    </p>
+  );
 }
